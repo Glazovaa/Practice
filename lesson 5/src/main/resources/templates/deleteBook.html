@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Delete book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Delete book</h1>
+    <table>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Age</th>
+        </tr>
+        <tr th:each="book: ${books}">
+            <td><a th:href="@{/book/deleteBook?ID={bookId}(bookId=${book.ID})}">Delete</a></td>
+            <td th:text="${book.name}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.age}"></td>
+        </tr>
+    </table>
+
+    <a href="/book">Back</a>
+</body>
+</html>
