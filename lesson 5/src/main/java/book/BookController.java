@@ -13,7 +13,6 @@ public class BookController {
 
     @GetMapping(value = "/book")
     public String BookForm(Model model) {
-        model.addAttribute("div", storage.isEmpty());
         model.addAttribute("books", storage.get());
         return "book";
     }

@@ -3,25 +3,32 @@
 <head>
     <title>Delete book</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Delete book</h1>
-    <table>
-        <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Author</th>
-            <th>Age</th>
-        </tr>
-        <tr th:each="book: ${books}">
-            <td><a th:href="@{/book/deleteBook?ID={bookId}(bookId=${book.ID})}">Delete</a></td>
-            <td th:text="${book.name}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.age}"></td>
-        </tr>
-    </table>
-
-    <a href="/book">Back</a>
+    <h1 class="text-center">Delete book</h1>
+    <div class="row w-25 p-3 mx-auto">
+        <table class="table">
+            <thead>
+            <tr class="text-center">
+                <th></th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book: ${books}" class="text-center">
+                <td><a th:href="@{/book/deleteBook?ID={bookId}(bookId=${book.ID})}" class="btn btn-large btn-primary p-0.5">Delete</a></td>
+                <td th:text="${book.name}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.age}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/book" class="btn btn-large btn-primary m-1">Back</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
