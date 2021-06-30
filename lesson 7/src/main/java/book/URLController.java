@@ -34,16 +34,20 @@ public class URLController {
         return "shortURL";
     }
 
+    @GetMapping("/admin")
+    public String adminTable(Model model){
+        Iterable<CutURL> CutURLs = repository.findAll();
+        model.addAttribute("abridges", CutURLs);
+        return "admin";
+    }
+
     @PostMapping("/urlCutter")
     public String URLAdd(@ModelAttribute CutURL url, Model model) {
         model.addAttribute("CutURL", url);
-        if (repository.findByShortURL(url.getDefaultURL()) != null){
-            redirectShorter(url.getDefaultURL());
-        }else {
-            String shortURL = codeGenerator.generate(shorterLength);
-            shott = shortURL;
-            repository.save(new CutURL(url.getDefaultURL(), shortURL));
-        }
+        String shortURL = codeGenerator.generate(shorterLength);
+        shott = shortURL;
+        System.out.println(shott);
+        repository.save(new CutURL(url.getDefaultURL(), shortURL));
         return "redirect:/shortURL";
     }
 
