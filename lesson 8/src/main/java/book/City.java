@@ -9,7 +9,7 @@ public class City {
     Long id;
 
     String name;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     Region region;
 
     public City() {
